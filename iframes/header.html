@@ -1,0 +1,65 @@
+﻿<div class="container-fluid top-menu py-3">
+    <div class="row align-items-center">
+        <div class="col-sm-5 col-md-5 col-lg-3 text-center py-3 pb-md-2 pb-sm-2" id="LogoDiv">
+            <a href="/index.html">
+                <img src="images/logo.png" />
+            </a>
+        </div>
+        <div class="col-sm-7 col-md-7 col-lg-6">
+            <div class="row">
+                <div class="col-12 top-menu-links text-center">
+                    <a id="ServiceAnchor">Сервіси</a>
+                    <a id="ContactAnchor">Контакти</a>
+                </div>
+
+                <div class="col text-center">
+                    <span>
+                        <span>
+                            <span>
+                                <i class="fa fa-mobile fa-2x"></i>
+                            </span>
+                            <span class="dont-wrap">Салон: +38 (097) 390-03-01</span>,
+                            <span class="dont-wrap">+38 (067) 708-22-94</span>
+                        </span>
+
+                        <br />
+
+                        <span class="dont-wrap">Виробництво: +38 (067) 707-90-21</span>
+                    </span>
+                    <br />
+                    <span class="font-weight-bold text-uppercase">ТЕЛЕФОНУЙТЕ ЦІЛОДОБОВО</span>
+                    <br />
+
+                    <span class="d-block d-lg-none">
+                        <i class="fa fa-envelope"></i>
+                        <span class="text-uppercase"><a href="mailto:klenolyst@gmail.com">klenolyst@gmail.com</a></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 d-none d-lg-block">
+            <div class="row text-center">
+                <div class="col">
+                    <span class="text-uppercase">
+                        <i class="fa fa-envelope"></i>
+                        <a href="mailto:klenolyst@gmail.com">klenolyst@gmail.com</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#ServiceAnchor").click(function () {
+        document.querySelector("#ServicesRow").scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+
+    $("#ContactAnchor").click(function () {
+        document.querySelector("#MapAndContactsDiv").scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+</script>

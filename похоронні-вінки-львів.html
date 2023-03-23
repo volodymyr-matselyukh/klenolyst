@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Похоронні вінки, вінки із живих квітів</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Галерея похоронних вінків. У нас ви зможете придбати похоронні вінки з живих та штучних квітів.">
+    <meta name="keywords" content="похоронні вінки з живих та штучних квітів, купити похоронний вінок Львів">
+    <meta name="author" content="Volodymyr Matseliukh">
+
+    <meta property="og:description" content="Галерея похоронних вінків. У нас ви зможете придбати похоронні вінки з живих та штучних квітів." />
+    <meta property="og:image" content="http://klenolyst.com.ua/images/vinok/main.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://klenolyst.com.ua/похоронні-вінки-львів.html" />
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Похоронні вінки, вінки із живих квітів">
+    <meta name="twitter:description" content="Галерея похоронних вінків. У нас ви зможете придбати похоронні вінки з живих та штучних квітів.">
+    <meta name="twitter:image" content="http://klenolyst.com.ua/images/vinok/main.jpg">
+    <meta name="twitter:image:alt" content="Похоронний вінок з живих квітів">
+
+    <link rel="shortcut icon" href="/images/logo-icon.png" type="image/x-icon">
+	<link rel="publisher" href="https://plus.google.com/101109505294105243628" />
+    <link href="css/minified-styles.css?v=0.0.1" type="text/css" rel="stylesheet" />
+
+    <style>
+        #CatalogMenu > .row a:nth-child(3) {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header></header>
+
+    <div class="container-fluid text-center" id="CatalogMenu" data-catalog-type="vinok">
+
+    </div>
+
+    <div class="container-fluid">
+        <section>
+            <h1 class="py-5 text-center font-weight-bold">Похоронні вінки та вінки з живих квітів</h1>
+        </section>
+
+        <div class="container">
+            <p>
+                Вінок є атрибутом похоронної обрядовості, найчастіше при похоронах дітей і неодруженої молоді. У цьому випадку він служив одним з елементів символічного «весілля», яку влаштовували для померлого. Вінок покладали на голову небіжчика або на кришку труни. За повір'ями, такі вінки треба було сплести з тих же рослин, що і весільні.
+            </p>
+            <p>
+                Найчастіше вибір траурного вінка відбувається виключно інтуїтивно, на підставі емоцій, якими сповнена людина, котра понесла втрату. Лишень деякі обізнані люди здатні в композиції ритуального вінка мовби зашифрувати послання для покійного. Часом це остання можливість передати те, що так і не було сказано за життя. Ось чому так важливо грамотно підходити до виготовлення і придбання ритуальних вінків.
+            </p>
+            <p>
+                На даній сторінці представлена галерея похоронних вінків. У нас ви зможете придбати похоронні вінки з живих та штучних квітів.
+            </p>
+        </div>
+
+        <div class="row justify-content-center text-center" id="ServicesRow">
+        </div>
+    </div>
+
+
+    <div class="container-fluid p-0" id="ContactsContainer"></div>
+
+    <footer class="container-fluid"></footer>
+
+    <script src="/scripts/jquery.min.js"></script>
+    <script src="/scripts/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $('header').load('/iframes/header.html');
+
+            $('#CatalogMenu').load('/iframes/catalog-menu.html');
+            $('#ContactsContainer').load('/iframes/contacts.html');
+            $('footer').load('/iframes/footer.html');
+
+            $("#FooterDate").text(' ' + new Date(Date.now()).getFullYear() + '.');
+
+            $("#ServiceAnchor").click(function () {
+                document.querySelector("#ServicesRow").scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+
+            $("#ContactAnchor").click(function () {
+                document.querySelector("#MapAndContactsDiv").scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

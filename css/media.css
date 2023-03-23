@@ -1,0 +1,16 @@
+@media (max-width: 892px) {
+  #ShopDescriptionBlock {
+    height: 100%;
+    /*&>section{
+            margin-top:25%;
+        }*/ }
+  #Schedule {
+    font-size: 12px; } }
+
+@media (max-width: 1092px) {
+  #Schedule {
+    font-size: 13px; } }
+
+@media (min-height: 720px) {
+  #ShopBackground {
+    height: calc( 100vh - 136px); } }
