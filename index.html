@@ -29,11 +29,39 @@
     <link rel="shortcut icon" href="/images/logo-icon.png" type="image/x-icon">
 
     <link href="css/minified-styles.css?v=0.0.3" type="text/css" rel="stylesheet" />
+	
+    <script src="/scripts/bootstrap.min.js" defer></script>
+	<script>
 
+		const loadContent = (url, elementQuerySelector) => {
+			fetch(url)
+			.then(function(response) {
+				return response.text();
+			})
+			.then(function(body) {
+				document.querySelector(elementQuerySelector).innerHTML = body;
+			});
+
+		}
+
+        document.addEventListener("DOMContentLoaded", () => {
+			let header = document.querySelector("#HeaderiFrame")
+
+			loadContent('/iframes/header.html', '#Header');
+			loadContent('/iframes/contacts.html', '#ContactsContainer');
+			loadContent('/iframes/footer.html', '#Footer');
+
+            $(".fa-map-marker").click(function () {
+                document.querySelector("#MapAndContactsDiv").scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+		});
+    </script>
 </head>
 <body>
 
-    <header></header>
+	<header id="Header"></header>
 
     <div class="container-fluid px-0">
         <div class="row no-gutters">
@@ -96,7 +124,11 @@
                             </p>
                             <p>
                                 <span class="font-weight-bold">УКРАЇНА, м. Львів</span><br />
-                                <span>Вул. К.Левицького, 100/1</span>&nbsp;<i class="fa fa-2x fa-map-marker"></i><br />
+                                <a href="https://goo.gl/maps/CFF76nRCvvzT98Mj6" target="_blank" rel="noopener noreferrer">
+									<span>Вул. К.Левицького, 100/1</span>&nbsp;<i class="fa fa-2x fa-map-marker"></i>
+								</a>
+								
+								<br />
                                 <span><span class="font-weight-bold">Салон:</span> +38 (097) 390-03-01,<br /> +38 (067) 708-22-94</span><br />
                                 <span><span class="font-weight-bold">Виробництво:</span> +38 (067) 707-90-21</span><br />
                                 <span><span class="font-weight-bold">E-mail:</span> klenolyst@gmail.com</span><br />
@@ -165,23 +197,6 @@
 
     </div>
 
-    <footer class="container-fluid"></footer>
-
-    <script src="/scripts/jquery.min.js"></script>
-    <script src="/scripts/bootstrap.min.js"></script>
-
-    <script>
-        $(function () {
-            $('header').load('/iframes/header.html');
-            $('#ContactsContainer').load('/iframes/contacts.html');
-            $('footer').load('/iframes/footer.html');
-
-            $(".fa-map-marker").click(function () {
-                document.querySelector("#MapAndContactsDiv").scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    <footer id="Footer" class="container-fluid"></footer>
 </body>
 </html>

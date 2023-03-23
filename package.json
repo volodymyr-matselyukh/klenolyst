@@ -1,16 +1,18 @@
 {
-  "version": "1.0.0",
-  "name": "asp.net",
-  "private": true,
-  "devDependencies": {
-    "font-awesome": "^4.7.0",
-    "gulp": "^3.9.1",
-    "gulp-sass": "^4.0.1"
-  },
-  "dependencies": {
-    "@fortawesome/fontawesome": "^1.1.8",
-    "bootstrap": "^4.1.1",
-    "bootstrap-4-grid": "^2.4.0",
-    "jquery": "^3.3.1"
-  }
+	"version": "1.0.0",
+	"name": "asp.net",
+	"private": true,
+	"devDependencies": {
+		"font-awesome": "^4.7.0",
+		"gulp": "^4.0.2"
+	},
+	"dependencies": {
+		"@fortawesome/fontawesome": "^1.1.8",
+		"bootstrap": "^4.1.1",
+		"bootstrap-4-grid": "^2.4.0",
+		"jquery": "^3.3.1"
+	},
+	"scripts": {
+		"gulp": "gulp start"
+	}
 }
