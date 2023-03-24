@@ -1,4 +1,6 @@
-﻿body {
+﻿// out: "../dist/css/site.css", compress: true, sourceMap: false
+
+body {
     margin: 0;
     padding: 0;
 }
@@ -16,7 +18,8 @@ h2{
 }
 
 .dont-wrap {
-    hyphens: none;
+	-webkit-hyphens: none;
+	hyphens: none;
     white-space: nowrap
 }
 
@@ -177,3 +180,5 @@ footer.container-fluid {
 .image-link{
     display:inline-block;
 }
+
+@import "media";

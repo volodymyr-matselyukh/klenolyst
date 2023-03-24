@@ -1,0 +1,65 @@
+﻿<section>
+	<h1 class="py-5 text-center font-weight-bold">Контакти</h1>
+	<div id="MapAndContactsDiv" class="row m-0 p-0">
+		<div class="col-12" id="Map"></div>
+		<div class="col-xl-3 col-md-4 col-sm-6 offset-1 d-none d-sm-block" id="MapContactsAbsolute">
+			<section>
+				<h1>Ми знаходимось:</h1>
+				<p>
+					<br />
+					<span class="font-weight-bold">УКРАЇНА, м. Львів</span><br />
+					<span>Вул. К.Левицького, 100/1</span><br />
+					<br />
+					<span>
+						<span class="font-weight-bold">Салон:</span><a
+							href="tel:+380677082294">&nbsp;+38 (067) 708-22-94</a>
+					</span>
+					<br />
+					<span>
+						<span class="font-weight-bold">Виробництво:</span>
+						<a href="tel:+380677079021">&nbsp;+38 (067) 707-90-21</a></span><br />
+					<br />
+					<span><span class="font-weight-bold">E-mail:</span> klenolyst@gmail.com</span><br />
+				</p>
+			</section>
+		</div>
+	</div>
+</section>
+
+<div class="col-12 d-sm-none d-block" id="MapContacts">
+	<section>
+		<h1 class="py-5 mb-0">Ми знаходимось:</h1>
+		<p>
+			<span class="font-weight-bold">УКРАЇНА, м. Львів</span><br />
+			<span>Вул. К.Левицького, 100/1</span><br />
+			<br />
+			<span><span class="font-weight-bold">Салон:</span> +38 (097) 390-03-01,<br /> +38 (067)
+				708-22-94</span><br />
+			<span><span class="font-weight-bold">Фірма:</span> +38 (067) 707-90-21</span><br />
+			<br />
+			<span><span class="font-weight-bold">E-mail:</span> klenolyst@gmail.com</span><br />
+		</p>
+	</section>
+</div>
+
+<script>
+	function initMap() {
+		// The location of Uluru
+		var klenolyst = { lat: 49.831396, lng: 24.045944 };
+		// The map, centered at Uluru
+		var map = new google.maps.Map(document.getElementById('Map'),
+			{
+				zoom: 15, center: klenolyst, mapTypeControl: false,
+				styles: [{ "featureType": "all", "elementType": "all", "stylers": [{ "saturation": -100 }, { "gamma": 0.5 }] }]
+			});
+
+		var marker = new google.maps.Marker({ position: klenolyst, map: map });
+		if (screen.width > 576) {
+			map.panBy(-200, 0);
+		}
+	}
+</script>
+
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXReOhzMucKaNQnrq8fzS49maQk485mc8&callback=initMap">
+	</script>
