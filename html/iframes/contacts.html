@@ -11,8 +11,8 @@
 					<span>Вул. К.Левицького, 100/1</span><br />
 					<br />
 					<span>
-						<span class="font-weight-bold">Салон:</span><a
-							href="tel:+380677082294">&nbsp;+38 (067) 708-22-94</a>
+						<span class="font-weight-bold">Салон:</span><a href="tel:+380677082294">&nbsp;+38 (067)
+							708-22-94</a>
 					</span>
 					<br />
 					<span>
@@ -41,25 +41,3 @@
 		</p>
 	</section>
 </div>
-
-<script>
-	function initMap() {
-		// The location of Uluru
-		var klenolyst = { lat: 49.831396, lng: 24.045944 };
-		// The map, centered at Uluru
-		var map = new google.maps.Map(document.getElementById('Map'),
-			{
-				zoom: 15, center: klenolyst, mapTypeControl: false,
-				styles: [{ "featureType": "all", "elementType": "all", "stylers": [{ "saturation": -100 }, { "gamma": 0.5 }] }]
-			});
-
-		var marker = new google.maps.Marker({ position: klenolyst, map: map });
-		if (screen.width > 576) {
-			map.panBy(-200, 0);
-		}
-	}
-</script>
-
-<script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXReOhzMucKaNQnrq8fzS49maQk485mc8&callback=initMap">
-	</script>

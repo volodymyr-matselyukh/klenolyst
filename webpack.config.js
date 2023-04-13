@@ -7,7 +7,9 @@ module.exports = {
     "entry": {
         main: "./src/main.js",
 		"bootstrap.min": "./src/bootstrap.min.js",
-		"jquery.min": "./src/jquery.min.js"
+		"jquery.min": "./src/jquery.min.js",
+		"jquery.lazy.min.js": "./src/jquery.lazy.min.js",
+		"jquery.lazy.plugins.min.js": "./src/jquery.lazy.plugins.min.js"
     },
     "output": {
         "path": __dirname + '/dist/scripts',
