@@ -22,9 +22,9 @@ export const business = {
 };
 
 export const nav = [
-  { href: '/труни-львів.html', label: 'Труни', category: 'truna', heroImage: '/images/truna/main.jpg' },
-  { href: '/хрести-львів.html', label: 'Хрести', category: 'cross', heroImage: '/images/cross/main.jpg' },
-  { href: '/похоронні-вінки-львів.html', label: 'Вінки', category: 'vinok', heroImage: '/images/vinok/main.jpg' },
-  { href: '/похоронні-покривала-львів.html', label: 'Покривала', category: 'pokryvalo', heroImage: '/images/pokryvalo/main.jpg' },
-  { href: '/катафалк-львів.html', label: 'Транспорт', category: 'cars', heroImage: '/images/cars/main.jpg' },
+  { href: '/труни-львів/', label: 'Труни', category: 'truna', heroImage: '/images/truna/main.jpg' },
+  { href: '/хрести-львів/', label: 'Хрести', category: 'cross', heroImage: '/images/cross/main.jpg' },
+  { href: '/похоронні-вінки-львів/', label: 'Вінки', category: 'vinok', heroImage: '/images/vinok/main.jpg' },
+  { href: '/похоронні-покривала-львів/', label: 'Покривала', category: 'pokryvalo', heroImage: '/images/pokryvalo/main.jpg' },
+  { href: '/катафалк-львів/', label: 'Транспорт', category: 'cars', heroImage: '/images/cars/main.jpg' },
 ];

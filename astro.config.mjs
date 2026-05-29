@@ -3,9 +3,9 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://klenolyst.com.ua',
-  trailingSlash: 'never',
+  trailingSlash: 'always',
   build: {
-    format: 'file',
+    format: 'directory',
   },
   integrations: [
     sitemap({

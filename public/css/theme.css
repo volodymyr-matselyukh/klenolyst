@@ -80,9 +80,15 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 }
 .top-menu > .row { min-height: 96px; }
 
-#LogoDiv img {
+#LogoDiv .logo-img {
   max-height: 64px;
   width: auto;
+  max-width: 100%;
+  height: auto;
+}
+#LogoDiv .logo-link {
+  display: inline-block;
+  max-width: 100%;
 }
 
 .top-menu-links {
@@ -251,6 +257,35 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   height: auto;
   min-height: 56px;
   padding: 8px 0;
+  position: relative;
+}
+#CatalogMenu::after {
+  /* fade hint on the right edge to suggest horizontal scroll on narrow screens */
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 32px;
+  pointer-events: none;
+  background: linear-gradient(to right, rgba(20,20,20,0), var(--dark));
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+@media (max-width: 575px) {
+  #CatalogMenu::after { opacity: 1; }
+}
+#CatalogMenu > .row {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+#CatalogMenu > .row::-webkit-scrollbar { display: none; }
+#CatalogMenu > .row > .col-12 {
+  white-space: nowrap;
+  text-align: center;
 }
 #CatalogMenu > .row a {
   color: rgba(255,255,255,0.6);
@@ -262,11 +297,16 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   text-decoration: none;
   border-bottom: 2px solid transparent;
   transition: color 0.18s ease, border-color 0.18s ease;
+  display: inline-block;
 }
 #CatalogMenu > .row a:hover { color: #fff; }
 #CatalogMenu > .row a[aria-current="page"] {
   color: #fff;
   border-bottom-color: var(--accent);
+}
+@media (max-width: 575px) {
+  #CatalogMenu > .row > .col-12 { text-align: left; padding-left: 12px; padding-right: 12px; }
+  #CatalogMenu > .row a { padding: 12px 10px; font-size: 0.9rem; }
 }
 
 /* -------- Product page body ---------------------------------- */

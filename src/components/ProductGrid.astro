@@ -26,7 +26,7 @@ const large = await Promise.all(
 ) : (
   <ul class="row justify-content-center text-center list-unstyled pswp-gallery" id="ServicesRow" aria-label={`Галерея: ${altPrefix.toLowerCase()}, ${entries.length} зразків`}>
     {entries.map((e, i) => (
-      <li class="col-12 col-sm-4 col-md-3 col-xl-2">
+      <li class="col-6 col-sm-4 col-md-3 col-xl-2">
         <a
           class="image-link"
           href={large[i].src}
