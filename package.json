@@ -1,0 +1,21 @@
+{
+  "name": "klenolyst-astro",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name=klenolyst",
+    "deploy:preview": "npm run build && wrangler pages deploy dist --project-name=klenolyst --branch=preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.0",
+    "astro": "^5.0.0",
+    "photoswipe": "^5.4.4"
+  },
+  "devDependencies": {
+    "wrangler": "^4.95.0"
+  }
+}

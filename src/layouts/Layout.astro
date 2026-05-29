@@ -1,0 +1,148 @@
+---
+import { business } from '../data/business.js';
+
+const {
+  title,
+  description,
+  image = business.image,
+  pathname = Astro.url.pathname,
+} = Astro.props;
+
+const canonical = new URL(pathname, business.url).toString();
+const ogImage = image.startsWith('http') ? image : new URL(image, business.url).toString();
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': business.url,
+  name: business.name,
+  url: business.url,
+  logo: business.logo,
+  image: business.image,
+  email: business.email,
+  telephone: business.phoneSalon,
+  priceRange: '₴₴',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: business.address.streetAddress,
+    addressLocality: business.address.addressLocality,
+    addressRegion: business.address.addressRegion,
+    postalCode: business.address.postalCode,
+    addressCountry: business.address.addressCountry,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: business.geo.latitude,
+    longitude: business.geo.longitude,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+      opens: '09:00',
+      closes: '18:00',
+    },
+  ],
+  contactPoint: [{
+    '@type': 'ContactPoint',
+    telephone: business.phoneSalon,
+    contactType: 'sales',
+    areaServed: 'UA',
+    availableLanguage: ['Ukrainian'],
+  }],
+  sameAs: [],
+};
+---
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={business.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="uk_UA" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <meta name="geo.region" content="UA-46" />
+    <meta name="geo.placename" content={business.address.addressLocality} />
+    <meta name="geo.position" content={`${business.geo.latitude};${business.geo.longitude}`} />
+    <meta name="ICBM" content={`${business.geo.latitude}, ${business.geo.longitude}`} />
+
+    <link rel="icon" href="/images/logo-icon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/images/logo.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap&subset=cyrillic,cyrillic-ext,latin,latin-ext"
+    />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/css/site.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Перейти до основного вмісту</a>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  .skip-link {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    background: #000;
+    color: #fff;
+    padding: 8px 12px;
+    z-index: 1000;
+  }
+  .skip-link:focus {
+    position: fixed;
+    left: 8px;
+    top: 8px;
+    width: auto;
+    height: auto;
+  }
+  :focus-visible {
+    outline: 2px solid #ffb300;
+    outline-offset: 2px;
+  }
+  /* button reset for header anchor-buttons */
+  .link-button {
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+  }
+</style>

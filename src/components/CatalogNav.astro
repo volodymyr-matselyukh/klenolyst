@@ -1,0 +1,17 @@
+---
+import { nav } from '../data/business.js';
+const { current } = Astro.props;
+---
+<nav class="container-fluid text-center" id="CatalogMenu" aria-label="Каталог">
+  <div class="row align-items-center">
+    <div class="col-12">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          aria-current={current === item.href ? 'page' : undefined}
+          style={current === item.href ? 'color: white;' : undefined}
+        >{item.label}</a>
+      ))}
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,367 @@
+/* ============================================================
+   Кленолист — refined-traditional theme overlay
+   Layered on top of bootstrap.min.css + site.css.
+   Goal: dignified, legible for 50+, no decoration without purpose.
+   ============================================================ */
+
+:root {
+  --bg:           #FAFAF7;   /* warm off-white, less harsh than #FFFFFF */
+  --bg-elev:     #FFFFFF;
+  --ink:         #1A1A1A;    /* near-black, softer than pure black */
+  --ink-muted:   #4A4A4A;
+  --ink-soft:    #6E6E6E;
+  --rule:        #DDD7C9;    /* warm tan rule */
+  --accent:      #722F37;    /* deep mahogany — dignified, replaces bright red */
+  --accent-deep: #50202A;
+  --dark:        #141414;
+  --dark-warm:   #1F1B17;
+
+  --font-serif:  'PT Serif', 'Times New Roman', Georgia, serif;
+  --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --measure:     68ch;
+}
+
+/* -------- Base typography ------------------------------------ */
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;        /* 17px base — older-eye friendly */
+  line-height: 1.65;
+  font-feature-settings: "kern", "liga", "calt";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.875rem; }
+h3 { font-size: 1.375rem; }
+h4 { font-size: 1.125rem; font-weight: 600; letter-spacing: 0; }
+
+@media (min-width: 768px) {
+  h1 { font-size: 3rem; line-height: 1.15; }
+  h2 { font-size: 2.25rem; }
+}
+
+p { color: var(--ink); }
+p + p { margin-top: 0.75rem; }
+
+main .container > p {
+  max-width: var(--measure);
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--ink-muted);
+}
+
+/* -------- Links ---------------------------------------------- */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+a:hover, a:focus-visible { color: var(--accent-deep); text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* -------- Header / top menu ---------------------------------- */
+.top-menu {
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+}
+.top-menu > .row { min-height: 96px; }
+
+#LogoDiv img {
+  max-height: 64px;
+  width: auto;
+}
+
+.top-menu-links {
+  font-family: var(--font-sans);
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+.top-menu-links a,
+.top-menu-links .link-button {
+  color: var(--ink);
+  padding: 8px 4px;
+  display: inline-block;
+}
+.top-menu-links a:hover,
+.top-menu-links .link-button:hover { color: var(--accent); text-decoration: none; }
+.top-menu-links a:not(:last-child)::after,
+.top-menu-links .link-button:not(:last-child)::after {
+  color: var(--rule);
+  content: "|";
+  margin: 0 10px;
+  font-weight: 300;
+}
+
+/* Phone numbers as CTAs — they're the conversion point */
+.top-menu .col.text-center { font-family: var(--font-sans); }
+.top-menu .col.text-center a[href^="tel:"] {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+.top-menu .col.text-center a[href^="tel:"]:hover { color: var(--accent); }
+.top-menu .fa-mobile { color: var(--accent); margin-right: 6px; }
+.top-menu .fa-envelope { color: var(--accent); margin-right: 6px; }
+.top-menu .dont-wrap { font-size: 1rem; }
+.top-menu .text-uppercase {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.top-menu a[href^="mailto:"] {
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+/* -------- Hero (homepage) ------------------------------------ */
+#ShopBackground {
+  height: 560px;
+  filter: saturate(0.85) contrast(0.95);
+}
+@media (min-height: 720px) {
+  #ShopBackground { height: calc(100vh - 160px); min-height: 560px; }
+}
+
+#ShopDescription {
+  background-color: rgba(15, 12, 10, 0.55);
+}
+#ShopDescriptionBlock {
+  background-color: rgba(20, 16, 14, 0.65);
+  padding: 56px 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+#ShopDescriptionBlock h1 {
+  color: #F5EFE4;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+#ShopDescriptionBlock p {
+  color: rgba(245, 239, 228, 0.92);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+#ShopDescriptionBlock a {
+  color: #F5EFE4;
+  border-bottom: 1px solid rgba(245,239,228,0.4);
+}
+#ShopDescriptionBlock a:hover { color: #fff; border-color: #fff; text-decoration: none; }
+
+/* -------- Schedule / aside contact block --------------------- */
+#Schedule, #Schedule a {
+  background-color: var(--dark-warm);
+  border: 0;
+  color: #EBE4D5;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+}
+#Schedule { padding: 32px 20px; }
+#Schedule h2,
+#Schedule h4 {
+  color: #F5EFE4;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+#Schedule .schedule-day {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+#Schedule .schedule-time {
+  font-variant-numeric: tabular-nums;
+  color: #EBE4D5;
+}
+#Schedule a[href^="tel:"] {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #F5EFE4;
+  background: transparent;
+}
+#Schedule a[href^="tel:"]:hover { color: #fff; text-decoration: underline; }
+#Schedule .font-weight-bold { color: #F5EFE4; }
+
+/* -------- Section headings ----------------------------------- */
+#services-heading,
+#contacts-heading,
+#page-heading {
+  font-style: italic;
+  font-weight: 400;
+  position: relative;
+  padding-bottom: 1.25rem;
+}
+#services-heading::after,
+#contacts-heading::after,
+#page-heading::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--accent);
+  margin: 1rem auto 0;
+}
+
+/* -------- Services grid (homepage) --------------------------- */
+#ServicesRow { gap: 8px 0; padding-bottom: 3rem; }
+#ServicesRow a { display: block; }
+#ServicesRow .img-thumbnail {
+  border: 1px solid var(--rule);
+  background: var(--bg-elev);
+  padding: 4px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+#ServicesRow a:hover .img-thumbnail {
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(20, 20, 20, 0.10);
+}
+#ServicesRow h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.25rem;
+  margin: 0.75rem 0 0;
+  color: var(--ink);
+}
+
+/* -------- Catalog nav (product pages) ------------------------ */
+#CatalogMenu {
+  background: var(--dark);
+  height: auto;
+  min-height: 56px;
+  padding: 8px 0;
+}
+#CatalogMenu > .row a {
+  color: rgba(255,255,255,0.6);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 12px 16px;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+#CatalogMenu > .row a:hover { color: #fff; }
+#CatalogMenu > .row a[aria-current="page"] {
+  color: #fff;
+  border-bottom-color: var(--accent);
+}
+
+/* -------- Product page body ---------------------------------- */
+main .container > p {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--ink-muted);
+  margin-bottom: 1rem;
+}
+main .container > p:first-of-type::first-letter {
+  font-family: var(--font-serif);
+  font-size: 3.25rem;
+  font-weight: 700;
+  float: left;
+  line-height: 0.9;
+  padding: 0.25rem 0.5rem 0 0;
+  color: var(--accent);
+}
+
+/* -------- Product gallery (gallery grids) -------------------- */
+#ServicesRow .img-thumbnail,
+ul#ServicesRow li .img-thumbnail {
+  border: 1px solid var(--rule);
+  background: var(--bg-elev);
+  padding: 4px;
+}
+ul#ServicesRow { list-style: none; padding-left: 0; }
+ul#ServicesRow li { margin-bottom: 12px; }
+ul#ServicesRow a:hover .img-thumbnail {
+  border-color: var(--accent);
+}
+
+/* -------- Contacts / map ------------------------------------- */
+#Map {
+  width: 100%;
+  height: 460px;
+  background-color: var(--rule);
+  border: 1px solid var(--rule);
+}
+#MapContactsAbsolute {
+  background: rgba(20, 16, 14, 0.86);
+  color: #EBE4D5;
+  height: auto;
+  min-height: 460px;
+  padding: 32px 28px;
+}
+#MapContactsAbsolute h3 {
+  color: #F5EFE4;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+#MapContactsAbsolute a { color: #F5EFE4; }
+#MapContactsAbsolute a:hover { color: #fff; }
+#MapContactsAbsolute .font-weight-bold { color: #F5EFE4; }
+
+#MapContacts {
+  padding: 24px;
+  background: var(--bg);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+#MapContacts h3 { font-style: italic; font-weight: 400; }
+
+/* -------- Map marker accent ---------------------------------- */
+.fa-map-marker { color: var(--accent); }
+
+/* -------- Footer --------------------------------------------- */
+footer.container-fluid {
+  background: var(--dark);
+  color: #BDB4A1;
+  height: auto;
+  padding: 2rem 1rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  border-top: 3px solid var(--accent);
+}
+footer.container-fluid > .row { height: auto; }
+
+/* -------- Misc ----------------------------------------------- */
+section { scroll-margin-top: 80px; }
+button.link-button { font-size: inherit; }
+
+/* Slightly larger touch targets on mobile for older users */
+@media (max-width: 768px) {
+  body { font-size: 1.0625rem; }
+  .top-menu .col.text-center a[href^="tel:"] { font-size: 1.15rem; }
+  #CatalogMenu > .row a { padding: 14px 12px; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

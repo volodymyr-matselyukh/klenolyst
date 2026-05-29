@@ -1,0 +1,45 @@
+---
+import { business } from '../data/business.js';
+const mapSrc = `https://www.google.com/maps?q=${business.geo.latitude},${business.geo.longitude}&z=15&output=embed`;
+---
+<section aria-labelledby="contacts-heading">
+  <h2 id="contacts-heading" class="py-5 text-center font-weight-bold">Контакти</h2>
+  <div id="MapAndContactsDiv" class="row m-0 p-0">
+    <div class="col-12">
+      <iframe
+        id="Map"
+        title="Карта розташування компанії Кленолист"
+        src={mapSrc}
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        style="border:0;"
+      ></iframe>
+    </div>
+    <div class="col-xl-3 col-md-4 col-sm-6 offset-1 d-none d-sm-block" id="MapContactsAbsolute">
+      <section>
+        <h3>Ми знаходимось:</h3>
+        <p>
+          <br />
+          <span class="font-weight-bold">УКРАЇНА, м. {business.address.addressLocality}</span><br />
+          <span>{business.address.streetAddress}</span><br /><br />
+          <span><span class="font-weight-bold">Салон:</span> <a href={`tel:${business.phoneSalon}`}>{business.phoneSalonDisplay}</a></span><br />
+          <span><span class="font-weight-bold">Виробництво:</span> <a href={`tel:${business.phoneProduction}`}>{business.phoneProductionDisplay}</a></span><br /><br />
+          <span><span class="font-weight-bold">E-mail:</span> <a href={`mailto:${business.email}`}>{business.email}</a></span><br />
+        </p>
+      </section>
+    </div>
+  </div>
+
+  <div class="col-12 d-sm-none d-block" id="MapContacts">
+    <section>
+      <h3 class="py-5 mb-0">Ми знаходимось:</h3>
+      <p>
+        <span class="font-weight-bold">УКРАЇНА, м. {business.address.addressLocality}</span><br />
+        <span>{business.address.streetAddress}</span><br /><br />
+        <span><span class="font-weight-bold">Салон:</span> <a href={`tel:${business.phoneSalon}`}>{business.phoneSalonDisplay}</a></span><br />
+        <span><span class="font-weight-bold">Виробництво:</span> <a href={`tel:${business.phoneProduction}`}>{business.phoneProductionDisplay}</a></span><br /><br />
+        <span><span class="font-weight-bold">E-mail:</span> <a href={`mailto:${business.email}`}>{business.email}</a></span><br />
+      </p>
+    </section>
+  </div>
+</section>

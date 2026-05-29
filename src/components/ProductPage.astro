@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Contacts from '../components/Contacts.astro';
+import CatalogNav from '../components/CatalogNav.astro';
+import ProductGrid from '../components/ProductGrid.astro';
+
+const { title, description, heading, image, category, currentHref, altPrefix } = Astro.props;
+---
+<Layout {title} {description} {image}>
+  <Header showAnchorButtons={false} />
+  <CatalogNav current={currentHref} />
+
+  <main id="main" class="container-fluid">
+    <section aria-labelledby="page-heading">
+      <h1 id="page-heading" class="py-5 text-center font-weight-bold">{heading}</h1>
+    </section>
+
+    <div class="container">
+      <slot />
+    </div>
+
+    <ProductGrid {category} {altPrefix} />
+  </main>
+
+  <div class="container-fluid p-0">
+    <Contacts />
+  </div>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,71 @@
+---
+import { Image, getImage } from 'astro:assets';
+import { business } from '../data/business.js';
+
+const { category, altPrefix } = Astro.props;
+
+const allImages = import.meta.glob('/src/assets/images/**/*.{jpg,jpeg,png}', { eager: true });
+
+const entries = Object.entries(allImages)
+  .filter(([path]) => path.includes(`/images/${category}/`))
+  .filter(([path]) => /\/\d+\.(jpe?g|png)$/i.test(path))
+  .map(([path, mod]) => {
+    const m = path.match(/\/(\d+)\.[^/]+$/);
+    return { num: m ? parseInt(m[1]) : 0, img: mod.default };
+  })
+  .sort((a, b) => a.num - b.num);
+
+const large = await Promise.all(
+  entries.map((e) => getImage({ src: e.img, width: 1600, format: 'webp' })),
+);
+---
+{entries.length === 0 ? (
+  <p class="text-center py-5">
+    Завітайте до нашого салону або зателефонуйте за номером <a href={`tel:${business.phoneSalon}`}>{business.phoneSalonDisplay}</a>, щоб ознайомитися з повним асортиментом.
+  </p>
+) : (
+  <ul class="row justify-content-center text-center list-unstyled pswp-gallery" id="ServicesRow" aria-label={`Галерея: ${altPrefix.toLowerCase()}, ${entries.length} зразків`}>
+    {entries.map((e, i) => (
+      <li class="col-12 col-sm-4 col-md-3 col-xl-2">
+        <a
+          class="image-link"
+          href={large[i].src}
+          data-pswp-width={large[i].attributes.width}
+          data-pswp-height={large[i].attributes.height}
+          aria-label={`Зразок №${i + 1} — відкрити фото у повному розмірі`}
+        >
+          <Image
+            src={e.img}
+            alt={altPrefix}
+            widths={[300, 600, 900]}
+            sizes="(max-width: 575px) 100vw, (max-width: 991px) 33vw, (max-width: 1199px) 25vw, 16vw"
+            formats={['webp']}
+            quality={75}
+            class="img-thumbnail"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <script>
+    import PhotoSwipeLightbox from 'photoswipe/lightbox';
+    import 'photoswipe/style.css';
+
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '#ServicesRow',
+      children: 'a',
+      pswpModule: () => import('photoswipe'),
+      bgOpacity: 0.94,
+      showHideAnimationType: 'fade',
+      closeTitle: 'Закрити',
+      zoomTitle: 'Збільшити',
+      arrowPrevTitle: 'Попереднє фото',
+      arrowNextTitle: 'Наступне фото',
+      errorMsg: 'Не вдалося завантажити зображення',
+    });
+    lightbox.init();
+  </script>
+)}
