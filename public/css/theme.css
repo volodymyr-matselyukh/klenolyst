@@ -139,20 +139,38 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 }
 
 /* -------- Hero (homepage) ------------------------------------ */
+/* ShopBackground becomes an absolute-filled background;
+   ShopDescription is now in normal flow so the hero grows with content. */
 #ShopBackground {
-  height: 560px;
+  position: absolute;
+  inset: 0;
+  height: auto;
+  z-index: 0;
   filter: saturate(0.85) contrast(0.95);
-}
-@media (min-height: 720px) {
-  #ShopBackground { height: calc(100vh - 160px); min-height: 560px; }
 }
 
 #ShopDescription {
+  position: relative;
+  z-index: 1;
   background-color: rgba(15, 12, 10, 0.55);
+  width: 100%;
+  min-height: 560px;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 32px 0;
+}
+@media (min-height: 720px) and (min-width: 992px) {
+  #ShopDescription { min-height: calc(100vh - 160px); }
+}
+#ShopDescription > .row {
+  flex: 1;
+  width: 100%;
+  margin: 0;
 }
 #ShopDescriptionBlock {
   background-color: rgba(20, 16, 14, 0.65);
-  padding: 56px 24px;
+  padding: 48px 24px;
   border-top: 1px solid rgba(255,255,255,0.06);
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
@@ -199,6 +217,9 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   font-variant-numeric: tabular-nums;
   color: #EBE4D5;
 }
+#Schedule p,
+#Schedule span,
+#Schedule div { color: #EBE4D5; }
 #Schedule a[href^="tel:"] {
   font-family: var(--font-serif);
   font-size: 1.05rem;
@@ -386,6 +407,24 @@ footer.container-fluid {
   border-top: 3px solid var(--accent);
 }
 footer.container-fluid > .row { height: auto; }
+footer .footer-credit {
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  color: rgba(189, 180, 161, 0.6);
+  letter-spacing: 0.04em;
+}
+footer .footer-credit a.developer {
+  color: rgba(189, 180, 161, 0.85);
+  text-decoration: underline;
+  text-decoration-color: rgba(189, 180, 161, 0.3);
+  text-underline-offset: 2px;
+  transition: color 0.18s ease;
+}
+footer .footer-credit a.developer:hover,
+footer .footer-credit a.developer:focus-visible {
+  color: #F5EFE4;
+  text-decoration-color: var(--accent);
+}
 
 /* -------- Misc ----------------------------------------------- */
 section { scroll-margin-top: 80px; }
