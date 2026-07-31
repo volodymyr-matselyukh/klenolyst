@@ -229,6 +229,12 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 }
 #Schedule a[href^="tel:"]:hover { color: #fff; text-decoration: underline; }
 #Schedule .font-weight-bold { color: #F5EFE4; }
+/* Breathing room between the opening hours and the contact block */
+#Schedule section + section {
+  margin-top: 44px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(235, 228, 213, 0.14);
+}
 
 /* -------- Section headings ----------------------------------- */
 #services-heading,
@@ -362,18 +368,23 @@ ul#ServicesRow a:hover .img-thumbnail {
 
 /* -------- Contacts / map ------------------------------------- */
 #Map {
+  display: block;               /* iframe is inline by default — the baseline gap leaves a strip above the footer */
   width: 100%;
   height: 460px;
   background-color: var(--rule);
   border: 1px solid var(--rule);
 }
 #MapContactsAbsolute {
-  background: rgba(20, 16, 14, 0.86);
+  background: rgba(20, 16, 14, 0.92);
   color: #EBE4D5;
   height: auto;
   min-height: 460px;
   padding: 32px 28px;
 }
+/* The global `p { color: var(--ink) }` would win over the inherited light
+   colour above and render the address in near-black on this dark panel. */
+#MapContactsAbsolute p,
+#MapContactsAbsolute span { color: #EBE4D5; }
 #MapContactsAbsolute h3 {
   color: #F5EFE4;
   font-family: var(--font-serif);
